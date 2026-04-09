@@ -9,9 +9,9 @@ import Canvas from '@components/Canvas.astro';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const title = 'astro creative base';
+const title = 'astro creative baseCSS view-transition based page transitions';
 const description =
-  'astro starter for creative projects, includes scss setup, gsap, lenis scroll, curtainsjs to load media with webgl, custom cursor, inview trigger, splash screen, robots.txt, sitemap.xml';
+  'A demo of page transitions based on the CSS view-transition API.';
 const shareImage = new URL('og-image.jpg', Astro.site);
 ---
 
@@ -28,7 +28,6 @@ const shareImage = new URL('og-image.jpg', Astro.site);
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={canonicalURL} />
-    <!-- TODO: remove when going live -->
     <!-- <meta name="robots" content="noindex, nofollow" /> -->
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
@@ -51,8 +50,8 @@ const shareImage = new URL('og-image.jpg', Astro.site);
       is:inline
       defer
       src="https://tracking.jnkl.dev/script.js"
-      data-website-id="b44d7dd2-f222-4333-a09d-e66fbe703a6e"
-      data-domains="astro-creative-base.jnkl.dev"
+      data-website-id="8c52c3a7-8498-490f-8b10-6c7828348e60"
+      data-domains="css-page-transition.jnkl.dev"
       data-do-not-track="true"></script>
   </head>
   <body>
