@@ -7,15 +7,13 @@ import glsl from 'vite-plugin-glsl';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: change to final domain
   site:
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:4321'
-      : 'https://astro-creative-base.jnkl.dev',
+      : 'https://css-page-transition.jnkl.dev',
   integrations: [
     robotsTxt({
       sitemapBaseFileName: 'sitemap-index',
-      // TODO: remove when going live
       // policy: [
       //   {
       //     userAgent: '*',
