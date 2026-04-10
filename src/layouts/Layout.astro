@@ -1,15 +1,13 @@
 ---
 import '../styles/index.scss';
 
-import Cursor from '@components/Cursor.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import Splash from '@components/Splash.astro';
-import Canvas from '@components/Canvas.astro';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const title = 'astro creative baseCSS view-transition based page transitions';
+const title = 'CSS view-transition based page transitions';
 const description =
   'A demo of page transitions based on the CSS view-transition API.';
 const shareImage = new URL('og-image.jpg', Astro.site);
@@ -40,7 +38,6 @@ const shareImage = new URL('og-image.jpg', Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={shareImage} />
-    <!-- TODO: preload font -->
     <script is:inline>
       if (!sessionStorage.getItem('splash:played')) {
         document.documentElement.classList.add('play-splash');
@@ -55,8 +52,6 @@ const shareImage = new URL('og-image.jpg', Astro.site);
       data-do-not-track="true"></script>
   </head>
   <body>
-    <Cursor />
-
     <Header />
 
     <slot />
@@ -64,8 +59,6 @@ const shareImage = new URL('og-image.jpg', Astro.site);
     <Footer />
 
     <Splash text="splish splash" />
-
-    <Canvas />
 
     <script>
       import '../scripts/scroll.ts';

@@ -1,16 +1,37 @@
 ---
+import { Image } from 'astro:assets';
+
 import Layout from '@layouts/Layout.astro';
+
+import banksy from '../images/banksy.webp';
+import humanRights from '../images/humanrights.jpg';
+import noOneIsIllegal from '../images/no-one-is-illegal.jpg';
 ---
 
 <Layout>
   <main>
     <section class="container">
-      <h1 data-inview-manual>section</h1>
-      <div class="grid media">
-        <div class="image" data-canvas>
-          <img src="/texture.jpg" alt="test-texture" crossorigin="" />
-        </div>
-      </div>
+      <h1 data-inview-manual>Page 2</h1>
+      <p data-inview-manual>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium
+        harum minima voluptatibus quisquam rem odit perspiciatis enim,
+        voluptatum nam adipisci nisi! Adipisci amet eligendi dicta corrupti
+        deserunt quo quos doloribus obcaecati sed dolore error, quibusdam nobis
+        officia saepe, enim laudantium facilis ab blanditiis odio. Aliquid
+        excepturi quis fugiat molestiae cupiditate.
+      </p>
+    </section>
+    <section class="container">
+      <h2 data-inview-manual>section</h2>
+      <Image src={noOneIsIllegal} alt="" class="image" data-inview />
+    </section>
+    <section class="container">
+      <h2 data-inview>section</h2>
+      <Image src={banksy} alt="" class="image" data-inview-manual />
+    </section>
+    <section class="container">
+      <h2 data-inview>section</h2>
+      <Image src={humanRights} alt="" class="image" data-inview />
     </section>
   </main>
 </Layout>
@@ -24,16 +45,15 @@ import Layout from '@layouts/Layout.astro';
     align-items: flex-start;
   }
 
-  .media {
-    width: 100%;
-    align-items: start;
+  h1 {
+    max-width: 20ch;
+  }
+
+  p {
+    max-width: 60ch;
   }
 
   .image {
-    grid-column: span 4;
-  }
-
-  .video {
-    grid-column: 7 / span 6;
+    max-width: min(100%, to-rem(960));
   }
 </style>

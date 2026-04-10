@@ -19,6 +19,12 @@ const initInViewTrigger = ({ trigger }: { trigger: NodeList }) => {
   });
 };
 
+window.addEventListener('inview:trigger-manual', () => {
+  document.querySelectorAll('[data-inview-manual]').forEach((el) => {
+    el.classList.add('inview');
+  });
+});
+
 window.addEventListener('load', () => {
   inviewTrigger = document.querySelectorAll('[data-inview]');
   if (inviewTrigger) {

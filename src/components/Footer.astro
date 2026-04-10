@@ -18,4 +18,27 @@
     display: flex;
     justify-content: center;
   }
+
+  a {
+    position: relative;
+
+    &::before {
+      content: '✌️';
+      position: absolute;
+      top: -5%;
+      left: 105%;
+      opacity: 0;
+      transform: rotate(-10deg) translateY(30%) rotate(-45deg);
+      transition: all 0.7s var(--ease-spring);
+    }
+
+    @include has-hover {
+      &:hover {
+        &::before {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    }
+  }
 </style>

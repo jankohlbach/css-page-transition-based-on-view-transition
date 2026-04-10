@@ -33,6 +33,7 @@ const { text = 'splash' } = Astro.props;
         .call(
           () => {
             window.dispatchEvent(new Event('splash:done'));
+            window.dispatchEvent(new Event('inview:trigger-manual'));
           },
           [],
           '<0.4',
@@ -43,13 +44,8 @@ const { text = 'splash' } = Astro.props;
         });
     } else {
       window.dispatchEvent(new Event('splash:done'));
+      window.dispatchEvent(new Event('inview:trigger-manual'));
     }
-  });
-
-  window.addEventListener('splash:done', () => {
-    document.querySelectorAll('[data-inview-manual]').forEach((el) => {
-      el.classList.add('inview');
-    });
   });
 </script>
 
