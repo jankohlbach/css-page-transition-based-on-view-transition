@@ -4,6 +4,7 @@ import '../styles/index.scss';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import Splash from '@components/Splash.astro';
+import PageTransition from '@components/PageTransition.astro';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -39,6 +40,18 @@ const shareImage = new URL('og-image.jpg', Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={shareImage} />
     <script is:inline>
+      window.addEventListener('pagereveal', (e) => {
+        if (!e.viewTransition) {
+          sessionStorage.removeItem('pt:active');
+          return;
+        }
+        e.viewTransition.finished.then(() => {
+          window.dispatchEvent(new Event('pt:done'));
+          sessionStorage.removeItem('pt:active');
+        });
+      });
+    </script>
+    <script is:inline>
       if (!sessionStorage.getItem('splash:played')) {
         document.documentElement.classList.add('play-splash');
       }
@@ -59,6 +72,8 @@ const shareImage = new URL('og-image.jpg', Astro.site);
     <Footer />
 
     <Splash text="splish splash" />
+
+    <PageTransition />
 
     <script>
       import '../scripts/scroll.ts';

@@ -1,0 +1,61 @@
+// Disable mix-blend-mode isolation so overlay elements render above root
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+
+// Keep old page snapshot fully visible and static — no animation.
+// It stays visible until the curtain fully covers it, then the
+// curtain's scale-down phase reveals the live new page DOM directly.
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  display: block;
+  opacity: 1;
+}
+
+// New page snapshot: hidden during the cover phase, revealed at the
+// midpoint when the curtain is fully covering. fill-mode: both holds
+// opacity: 0 during the delay, then snaps to opacity: 1 at exactly 1s —
+// safely behind the curtain.
+::view-transition-new(root) {
+  animation: root-new-show 0s 1s both;
+  mix-blend-mode: normal;
+  display: block;
+}
+
+@keyframes root-new-show {
+  from { opacity: 0; }
+}
+
+// Only animate the elements on the new page,
+// so the old page stays perfectly still behind the curtain.
+::view-transition-old(pt-1),
+::view-transition-old(pt-2) {
+  display: none;
+}
+
+// The translate is needed because the element needs to be visible to be captured in the snapshot,
+// but we don't want it visible on the screen until the animation starts, so we place it off-screen.
+::view-transition-new(pt-1) {
+  translate: 100vw;
+  animation: pt-1 2s var(--ease-smooth) both;
+}
+
+::view-transition-new(pt-2) {
+  translate: 100vw;
+  animation: pt-2 2s var(--ease-smooth) both;
+}
+
+@keyframes pt-1 {
+  0%   { scale: 0; }
+  50%  { scale: 1; }
+  60%  { scale: 1; }
+  100% { scale: 0; }
+}
+
+@keyframes pt-2 {
+  0%   { scale: 0; }
+  10%  { scale: 0; }
+  60%  { scale: 1; }
+  100% { scale: 0; }
+}
