@@ -15,9 +15,9 @@ const { text = 'splash' } = Astro.props;
     document.querySelector('[data-js="splash"]');
 
   window.addEventListener('load', () => {
-    if (!sessionStorage.getItem('splash:played') && splash) {
-      scrollStop();
+    scrollStop();
 
+    if (!sessionStorage.getItem('splash:played') && splash) {
       gsap
         .timeline({
           delay: 0.2,
@@ -43,8 +43,11 @@ const { text = 'splash' } = Astro.props;
           sessionStorage.setItem('splash:played', 'true');
         });
     } else {
-      window.dispatchEvent(new Event('splash:done'));
-      window.dispatchEvent(new Event('inview:trigger-manual'));
+      if (!sessionStorage.getItem('pt:active')) {
+        scrollStart();
+        window.dispatchEvent(new Event('splash:done'));
+        window.dispatchEvent(new Event('inview:trigger-manual'));
+      }
     }
   });
 </script>
