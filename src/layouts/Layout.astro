@@ -40,7 +40,7 @@ const shareImage = new URL('og-image.jpg', Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={shareImage} />
     <script is:inline>
-      window.addEventListener('pagereveal', (e) => {
+      window.addEventListener('pagereveal', async (e) => {
         if (!e.viewTransition) {
           sessionStorage.removeItem('pt:active');
           return;

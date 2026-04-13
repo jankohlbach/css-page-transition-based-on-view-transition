@@ -15,9 +15,11 @@ const { text = 'splash' } = Astro.props;
     document.querySelector('[data-js="splash"]');
 
   window.addEventListener('load', () => {
-    scrollStop();
+    // scrollStop();
 
     if (!sessionStorage.getItem('splash:played') && splash) {
+      scrollStop();
+
       gsap
         .timeline({
           delay: 0.2,

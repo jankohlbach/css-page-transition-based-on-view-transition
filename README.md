@@ -8,8 +8,6 @@ Often though, page transitions are completely separate elements and effects like
 
 With this approach, I found a way to make this work purely with CSS animations, the JS needed is only to time things, send events after finishing etc.
 
-Code necessary to achieve this is all in this commit https://github.com/jankohlbach/css-page-transition-based-on-view-transition/commit/b5caf93da61028f848dd8047340fae27ad362a6f
-
 Based on https://github.com/jankohlbach/astro-creative-base
 
 ## Setup

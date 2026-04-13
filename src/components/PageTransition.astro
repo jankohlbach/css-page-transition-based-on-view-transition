@@ -1,14 +1,14 @@
 <script>
-  import { scrollStart, scrollStop } from '../scripts/scroll';
+  // import { scrollStart, scrollStop } from '../scripts/scroll';
 
-  window.addEventListener('pageswap', (e) => {
+  window.addEventListener('pageswap', async (e) => {
     if (!e.viewTransition) return;
-    scrollStop();
+    // scrollStop();
     sessionStorage.setItem('pt:active', 'true');
   });
 
   window.addEventListener('pt:done', () => {
-    scrollStart();
+    // scrollStart();
     window.dispatchEvent(new Event('inview:trigger-manual'));
   });
 </script>
